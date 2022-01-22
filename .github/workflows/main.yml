@@ -43,6 +43,3 @@ jobs:
       - name: Test
         run: |
           npm run test -- --prod
-      - name: Deploy
-        run: |
-          npm run deploy
