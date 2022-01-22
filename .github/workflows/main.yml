@@ -43,3 +43,6 @@ jobs:
       - name: Test
         run: |
           npm run test -- --configuration production
+      - name: Build For GH Pages
+        run: |
+          npm run build-for-gh-pages
