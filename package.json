@@ -5,11 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-for-gh-pages": "ng build --output-path docs --base-href /latest-news-lucky-okoedion/",
+    "build-for-gh-pages": "ng build --output-path docs --base-href /LatestNews/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "ng deploy --base-href=/latest-news-lucky-okoedion/",
-    "deploy-with-gh-actions": "ng deploy --base-href=/LatestNews/tree/github-pages/"
+    "deploy-with-gh-actions": "ng deploy --base-href=/LatestNews/"
   },
   "private": true,
   "dependencies": {
