@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy --base-href=/LatestNews/"
+    "deploy": "ng deploy --base-href=/latest-news-lucky-okoedion/",
+    "deploy-remote": "ng deploy --base-href=/LatestNews/"
   },
   "private": true,
   "dependencies": {
