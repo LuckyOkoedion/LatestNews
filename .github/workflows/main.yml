@@ -39,10 +39,10 @@ jobs:
           npm ci
       - name: Build
         run: |
-          npm run build -- --configuration production
+          npm run build -- --prod
       - name: Test
         run: |
-          npm run test -- --configuration production
+          npm run test -- --prod
       - name: Build For GH Pages
         run: |
           npm run build-for-gh-pages
