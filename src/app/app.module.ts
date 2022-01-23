@@ -10,6 +10,9 @@ import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NewsCardComponent } from './components/news-card/news-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './components/footer/footer.component';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ListPageComponent,
     FilterComponent,
     HeaderComponent,
-    NewsCardComponent
+    NewsCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
