@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IApiResponse } from '../models/IApiResponse';
 import { map } from 'rxjs/operators';
+import { INewsItem } from '../models/INewsItem';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +24,10 @@ export class AppStateService {
   };
 
   newsList: Subject<IApiResponse> = new Subject();
+  selectedNewsItem: Subject<INewsItem> = new Subject();
 
   constructor(private http: HttpClient) {
-    // console.log(`Api key is: ${environment.API_KEY}`);
+
 
   }
 
@@ -34,15 +36,15 @@ export class AppStateService {
     let constructedUrl = this.baseApiUrl + `?apikey=${this.apiKey}`;
     // construct url based on available parameters.
 
-    if(typeof country !== 'undefined') {
+    if (typeof country !== 'undefined') {
       constructedUrl = constructedUrl + `&country=${country}`;
     }
 
-    if(typeof category !== 'undefined') {
+    if (typeof category !== 'undefined') {
       constructedUrl = constructedUrl + `&category=${category}`;
     }
 
-    if(typeof language !== 'undefined') {
+    if (typeof language !== 'undefined') {
       constructedUrl = constructedUrl + `&language=${language}`;
     }
 
@@ -64,4 +66,13 @@ export class AppStateService {
   getNewsList(): Observable<IApiResponse> {
     return this.newsList.asObservable();
   }
+
+  setSelectedNewsItem(value: INewsItem) {
+    this.selectedNewsItem.next(value);
+  }
+
+  getSelectedNewsItem() {
+    return this.selectedNewsItem.asObservable();
+  }
+
 }
