@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'latest-news-lucky-okoedion';
 
   constructor() {
-    console.log(`Api key is: ${environment.API_KEY}`);
+
   }
 }
