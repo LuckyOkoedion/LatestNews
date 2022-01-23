@@ -1,5 +1,9 @@
-<div class="main-container">
+<div class="main-container" *ngIf="!loading">
     <app-header class="header"></app-header>
     <router-outlet class="router"></router-outlet>
     <app-footer class="footer"></app-footer>
+</div>
+
+<div class="spinner-container">
+    <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
 </div>

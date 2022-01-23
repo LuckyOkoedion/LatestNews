@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IApiResponse } from '../models/IApiResponse';
 import { map } from 'rxjs/operators';
@@ -25,6 +25,7 @@ export class AppStateService {
 
   newsList: Subject<IApiResponse> = new Subject();
   selectedNewsItem: Subject<INewsItem> = new Subject();
+  loadingState: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) {
 
@@ -73,6 +74,14 @@ export class AppStateService {
 
   getSelectedNewsItem() {
     return this.selectedNewsItem.asObservable();
+  }
+
+  setLoadingState(value: boolean) {
+    this.loadingState.next(value);
+  }
+
+  getLoadingState() {
+    return this.loadingState.asObservable();
   }
 
 }
