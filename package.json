@@ -1,4 +1,8 @@
 {
+  "engines": {
+    "npm": ">=8.1.2",
+    "node": ">=16.13.1"
+  },
   "name": "latest-news-lucky-okoedion",
   "version": "0.0.0",
   "scripts": {
