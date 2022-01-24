@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { environment } from './../environments/environment';
+import { IApiResponse } from './models/IApiResponse';
 import { INewsItem } from './models/INewsItem';
 import { AppStateService } from './services/app-state.service';
 
@@ -13,8 +15,17 @@ export class AppComponent {
   selectedPage: "list" | "detail";
   loading: boolean;
   newsItem: INewsItem;
+  newsList: IApiResponse;
+  mainCallSubscription: Subscription;
 
   constructor(private appStateService: AppStateService) {
+    this.mainCallSubscription = this.appStateService.callApi().subscribe(valu => {
+      const result = valu;
+      if (typeof result !== "undefined") {
+        this.newsList = result;
+        this.appStateService.setLoadingState(false);
+      }
+    });
     this.appStateService.getLoadingState().subscribe(value => {
       const theValue = value;
       if (typeof theValue !== 'undefined') {
@@ -34,5 +45,10 @@ export class AppComponent {
   switchToDetails(value: INewsItem) {
     this.newsItem = value;
     this.appStateService.setSelectedPage("detail");
+  }
+
+  handleFilter(value: IApiResponse) {
+    this.mainCallSubscription.unsubscribe();
+    this.newsList = value;
   }
 }

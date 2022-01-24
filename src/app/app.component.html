@@ -1,6 +1,10 @@
 <div *ngIf="!loading">
     <app-header class="header"></app-header>
-    <app-list-page *ngIf="selectedPage === 'list' " (toDetailsEvent)="switchToDetails($event)"></app-list-page>
+    <app-list-page *ngIf="selectedPage === 'list' " 
+    (toDetailsEvent)="switchToDetails($event)" 
+    (filterBoosterEvent)="handleFilter($event)"
+    [newsList]="newsList">
+    </app-list-page>
     <app-details-page *ngIf="selectedPage === 'detail' " [newsItem]="newsItem"></app-details-page>
     <app-footer class="footer"></app-footer>
 </div>

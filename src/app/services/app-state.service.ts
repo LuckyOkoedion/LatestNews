@@ -12,7 +12,6 @@ import { INewsItem } from '../models/INewsItem';
 export class AppStateService {
 
   baseApiUrl = "https://newsdata.io/api/1/news";
-  apiKey = environment.API_KEY;
 
   reqOptions = {
     headers: {
@@ -35,35 +34,29 @@ export class AppStateService {
 
   callApi(country?: string, category?: string, language?: string) {
     this.setLoadingState(true);
-    let constructedUrl = this.baseApiUrl + `?apikey=${this.apiKey}`;
+    let constructedUrl = "jesus-route";
     // construct url based on available parameters.
 
     if (typeof country !== 'undefined') {
-      constructedUrl = constructedUrl + `&country=${country}`;
+      constructedUrl = `&country=${country}`;
     }
 
     if (typeof category !== 'undefined') {
-      constructedUrl = constructedUrl + `&category=${category}`;
+      constructedUrl = `&category=${category}`;
     }
 
     if (typeof language !== 'undefined') {
-      constructedUrl = constructedUrl + `&language=${language}`;
+      constructedUrl = `&language=${language}`;
     }
 
-    this.http.get<IApiResponse>
-      (constructedUrl, this.reqOptions)
+    return this.http.get<IApiResponse>
+      (`http://localhost:8080/data/${constructedUrl}`, this.reqOptions)
       .pipe(
         map((value: HttpResponse<IApiResponse>) => {
           const theValue = value.body
           return theValue;
         })
-      ).subscribe(valu => {
-        const result = valu;
-        if (typeof result !== "undefined") {
-          this.newsList.next(result);
-          this.setLoadingState(false);
-        }
-      })
+      );
   }
 
   getNewsList(): Observable<IApiResponse> {
