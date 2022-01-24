@@ -1,0 +1,16 @@
+.filters-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.the-filters {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.filter {
+    margin-left: 10px;
+}
