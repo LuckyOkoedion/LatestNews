@@ -1,2 +1,9 @@
-<h1>Latest News Home Page</h1>
-<p>Let's now build the app</p>
+<div *ngIf="!loading">
+    <app-header class="header"></app-header>
+    <router-outlet class="router"></router-outlet>
+    <app-footer class="footer"></app-footer>
+</div>
+
+<div class="spinner-container">
+    <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
+</div>
