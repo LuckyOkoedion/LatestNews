@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { dummydata } from 'src/app/models/dummy-data';
 import { IApiResponse } from 'src/app/models/IApiResponse';
+import { INewsItem } from 'src/app/models/INewsItem';
 import { AppStateService } from 'src/app/services/app-state.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { AppStateService } from 'src/app/services/app-state.service';
 export class ListPageComponent implements OnInit {
 
   newsList: IApiResponse = dummydata;
+
+  @Output() toDetailsEvent = new EventEmitter<INewsItem>();
 
 
   constructor(private appStateService: AppStateService) {
@@ -25,6 +28,11 @@ export class ListPageComponent implements OnInit {
     //     console.log(JSON.stringify(this.newsList))
     //   }
     // });
+  }
+
+  toDetails(data: INewsItem) {
+    this.toDetailsEvent.emit(data);
+
   }
 
 }
