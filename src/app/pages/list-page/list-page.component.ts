@@ -11,23 +11,22 @@ import { AppStateService } from 'src/app/services/app-state.service';
 })
 export class ListPageComponent implements OnInit {
 
-  newsList: IApiResponse = dummydata;
+  newsList: IApiResponse;
 
   @Output() toDetailsEvent = new EventEmitter<INewsItem>();
 
 
   constructor(private appStateService: AppStateService) {
-    // this.appStateService.callApi();
+    this.appStateService.callApi();
   }
 
   ngOnInit(): void {
-    // this.appStateService.getNewsList().subscribe(value => {
-    //   const theValue = value;
-    //   if (typeof theValue !== 'undefined') {
-    //     this.newsList = theValue;
-    //     console.log(JSON.stringify(this.newsList))
-    //   }
-    // });
+    this.appStateService.getNewsList().subscribe(value => {
+      const theValue = value;
+      if (typeof theValue !== 'undefined') {
+        this.newsList = theValue;
+      }
+    });
   }
 
   toDetails(data: INewsItem) {

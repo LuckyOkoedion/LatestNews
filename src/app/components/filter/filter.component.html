@@ -1,1 +1,33 @@
-<p>filter works!</p>
+<div class="filters-container">
+    <div></div>
+    <div class="the-filters">
+        <div class="filter country-filter">
+            <mat-form-field appearance="fill">
+                <mat-label>Country</mat-label>
+                <mat-select [(ngModel)]="selectedCountry" (selectionChange)="filterByCountry()">
+                    <mat-option *ngFor="let country of countryList" [value]="country">
+                        {{countryMapping[country]}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="filter country-filter">
+            <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                <mat-select [(ngModel)]="selectedCategory" (selectionChange)="filterByCategory()">
+                    <mat-option *ngFor="let category of categoryList" [value]="category">
+                        {{category}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="filter country-filter">
+            <mat-form-field appearance="fill">
+                <mat-label>Language</mat-label>
+                <mat-select [(ngModel)]="selectedLanguage" (selectionChange)="filterByLanguage()">
+                    <mat-option *ngFor="let language of languageList" [value]="language">
+                        {{languageMapping[language]}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+    </div>
+</div>
