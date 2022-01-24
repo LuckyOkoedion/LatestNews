@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { dummydata } from 'src/app/models/dummy-data';
 import { IApiResponse } from 'src/app/models/IApiResponse';
 import { INewsItem } from 'src/app/models/INewsItem';
@@ -11,27 +11,27 @@ import { AppStateService } from 'src/app/services/app-state.service';
 })
 export class ListPageComponent implements OnInit {
 
-  newsList: IApiResponse;
+  @Input() newsList: IApiResponse;
 
   @Output() toDetailsEvent = new EventEmitter<INewsItem>();
+  @Output() filterBoosterEvent = new EventEmitter<IApiResponse>();
 
 
   constructor(private appStateService: AppStateService) {
-    this.appStateService.callApi();
+
   }
 
   ngOnInit(): void {
-    this.appStateService.getNewsList().subscribe(value => {
-      const theValue = value;
-      if (typeof theValue !== 'undefined') {
-        this.newsList = theValue;
-      }
-    });
+
   }
 
   toDetails(data: INewsItem) {
     this.toDetailsEvent.emit(data);
 
+  }
+
+  pushFilterEvent(data: IApiResponse) {
+    this.filterBoosterEvent.emit(data);
   }
 
 }

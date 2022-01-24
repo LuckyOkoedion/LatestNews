@@ -1,6 +1,6 @@
 <div class="list-page-container">
     <div class="filter">
-        <app-filter></app-filter>
+        <app-filter (filterEvent)="pushFilterEvent($event)"></app-filter>
     </div>
     <div class="news-list">
 
