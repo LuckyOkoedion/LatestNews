@@ -1,3 +1,14 @@
 <div class="list-page-container">
-    <p>list-page works!</p>
+    <div class="filter">
+        <app-filter></app-filter>
+    </div>
+    <div class="news-list">
+
+        <app-news-card 
+        *ngFor="let news of newsList?.results"
+        [newsItem]=news
+        >
+       </app-news-card>
+
+    </div>
 </div>
