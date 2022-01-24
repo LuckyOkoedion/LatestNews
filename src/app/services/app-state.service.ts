@@ -50,7 +50,7 @@ export class AppStateService {
     }
 
     return this.http.get<IApiResponse>
-      (`http://localhost:8080/data/${constructedUrl}`, this.reqOptions)
+      (`https://latest-news-lucky-okoedion.herokuapp.com/data/${constructedUrl}`, this.reqOptions)
       .pipe(
         map((value: HttpResponse<IApiResponse>) => {
           const theValue = value.body
