@@ -1,11 +1,23 @@
 <div class="details-page-container">
-    <div class="display-image">
-        <img src="{{newsItem?.image_url}}" alt="...">
+    <div>
+        <button mat-raised-button color="accent" class="to-list-button" (click)="switchToList()">
+            <mat-icon>undo</mat-icon> Back
+        </button>
     </div>
-    <div class="the-details">
-        <h1>{{newsItem?.title}}</h1>
-        <div class="content">
-            {{newsItem?.content}}
+
+    <div>
+        <div class="details-container">
+            <div class="display-image">
+                <img src="{{newsItem.image_url}}" alt="...">
+            </div>
+            <div class="details-spacer"></div>
+            <div class="the-details">
+                <h1> <b>{{newsItem.title}}</b></h1>
+                <div class="content">
+                    {{newsItem.content}}
+                </div>
+            </div>
         </div>
     </div>
+
 </div>

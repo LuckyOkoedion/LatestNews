@@ -24,7 +24,7 @@ export class AppStateService {
   };
 
   newsList: Subject<IApiResponse> = new Subject();
-  selectedNewsItem: Subject<INewsItem> = new Subject();
+  selectedPage: BehaviorSubject<"list" | "detail"> = new BehaviorSubject("list");
   loadingState: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) {
@@ -68,12 +68,12 @@ export class AppStateService {
     return this.newsList.asObservable();
   }
 
-  setSelectedNewsItem(value: INewsItem) {
-    this.selectedNewsItem.next(value);
+  setSelectedPage(value: "list" | "detail") {
+    this.selectedPage.next(value);
   }
 
-  getSelectedNewsItem() {
-    return this.selectedNewsItem.asObservable();
+  getSelectedPage() {
+    return this.selectedPage.asObservable();
   }
 
   setLoadingState(value: boolean) {

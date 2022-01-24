@@ -1,0 +1,39 @@
+.details-page-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.to-list-button {
+  width: fit-content;
+}
+
+.details-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.display-image {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+img {
+  width: 100%;
+}
+
+.details-spacer {
+  width: 200px;
+}
+
+.the-details {
+  max-width: 600px;
+  min-width: 300px;
+}

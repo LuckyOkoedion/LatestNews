@@ -4,11 +4,20 @@
     </div>
     <div class="news-list">
 
-        <app-news-card 
-        *ngFor="let news of newsList?.results"
-        [newsItem]=news
-        >
-       </app-news-card>
+        <mat-card class="news-card" *ngFor="let news of newsList?.results">
+            <mat-card-header>
+                <mat-card-title>{{news.title}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="{{news.image_url}}" alt="...">
+            <mat-card-content>
+                <p>
+                    {{news.description}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="toDetails(news)">Read More</button>
+            </mat-card-actions>
+        </mat-card>
 
     </div>
 </div>

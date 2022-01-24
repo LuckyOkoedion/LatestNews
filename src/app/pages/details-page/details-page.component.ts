@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { INewsItem } from 'src/app/models/INewsItem';
 import { AppStateService } from 'src/app/services/app-state.service';
@@ -9,20 +9,19 @@ import { AppStateService } from 'src/app/services/app-state.service';
   styleUrls: ['./details-page.component.css']
 })
 export class DetailsPageComponent implements OnInit, AfterViewInit, OnDestroy {
-  newsItem: INewsItem;
+ @Input() newsItem: INewsItem;
 
-  constructor(private stateService: AppStateService, private router: Router) {
-   
+  constructor(private stateService: AppStateService) {
+
   }
 
   ngOnInit(): void {
-    this.stateService.getSelectedNewsItem().subscribe(value => {
-      const theValue = value;
-      if (typeof theValue !== 'undefined') {
-        this.newsItem = theValue;
-      }
-    })
+ 
 
+  }
+
+  switchToList() {
+    this.stateService.setSelectedPage("list");
   }
 
   ngAfterViewInit(): void {
@@ -31,7 +30,7 @@ export class DetailsPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    this.stateService.setSelectedNewsItem(null);
+
   }
 
 }
