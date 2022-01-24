@@ -20,7 +20,6 @@ export class DetailsPageComponent implements OnInit, AfterViewInit, OnDestroy {
       const theValue = value;
       if (typeof theValue !== 'undefined') {
         this.newsItem = theValue;
-        console.log(JSON.stringify(this.newsItem));
       }
     })
 
