@@ -12,7 +12,7 @@ import { INewsItem } from '../models/INewsItem';
 export class AppStateService {
 
   baseApiUrl = "https://newsdata.io/api/1/news";
-  apiKey = process.env.API_KEY;
+  apiKey = environment.API_KEY;
 
   reqOptions = {
     headers: {
